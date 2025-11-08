@@ -14,11 +14,12 @@
 
 .header {
   inline-size: var(--container-width);
-  block-size: var(--container-height);
   padding: var(--padding-y) var(--padding-x);
   background-color: #fff;
   margin: 100px var(--margin-x);
   border: 2px solid #000;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .header-content {
@@ -31,13 +32,10 @@
 
 .header__logo {
   font-size: var(--logo-size);
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .header__title {
   font-size: var(--title-size);
-  text-transform: uppercase;
 }
 
 .container {
@@ -152,21 +150,27 @@
   filter: blur(0.3rem) invert(0.6);
 }
 
-.card__like-button:focus,
-.footer__button:focus {
+.button {
+  position: relative;
+  background: transparent;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+}
+
+.button:focus {
   outline: none;
+}
+
+.card__like-button:focus-visible,
+.footer__button:focus-visible {
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
 .card__icon-button {
-  background: none;
   transition: border 0.3s ease;
   border: 2px solid transparent;
-  padding: 0;
-}
-
-.card__icon-button:focus {
-  outline: none;
 }
 
 .card__icon-button:focus-visible {
@@ -175,10 +179,7 @@
 
 .card__like-button {
   transition: box-shadow 0.3s ease;
-  position: relative;
   overflow: hidden;
-  background: transparent;
-  padding: 12.5px 37px;
   inline-size: 130px;
   block-size: 38px;
   padding: 9px 17px;
@@ -188,13 +189,11 @@
   display: flex;
   flex-direction: row;
   gap: 8px;
+  justify-content: center;
   align-items: center;
   padding: 15px 20px;
   transition: box-shadow 0.3s ease;
-  position: relative;
   background: var(--text-color);
-  font-size: 14px;
-  line-height: 90%;
 }
 
 .card__like-button::before,
@@ -223,17 +222,18 @@
 .floppy-icon {
   color: var(--text-color);
   mix-blend-mode: difference;
-  inline-size: 21px;
-  block-size: 21px;
   flex-shrink: 0;
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-block-end: 100px;
 }
 
-.footer__dialog[open] {
-  display: flex;
+.footer__dialog {
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -242,13 +242,17 @@
   max-inline-size: 353px;
 }
 
-.footer__dialog[open] .floppy-icon {
-  inline-size: 39px;
-  block-size: 39px;
+.footer__dialog[open] {
+  display: flex;
 }
 
 .footer__dialog[open]::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.footer__dialog .footer__button {
+  padding: 9px 17px;
+  inline-size: 100%;
 }
 
 .footer__dialog-text {
@@ -267,10 +271,6 @@
 
 .footer__button {
   border: 2px solid var(--accent-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  inline-size: 100%;
 }
 
 svg .sparks {
@@ -335,7 +335,7 @@ svg .core {
   transition-delay: 0.06s;
 }
 
-@media (width <= 375px) {
+@media (width < 376px) {
   .footer__button {
     justify-content: center;
     flex-direction: column;

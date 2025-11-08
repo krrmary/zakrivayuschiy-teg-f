@@ -1,4 +1,4 @@
-@keyframes like-scale {
+@keyframes heart-pulse {
   from {
     transform: scale(1);
   }
@@ -7,7 +7,7 @@
   }
 }
 
-@keyframes like-sparks {
+@keyframes heart-sparkle {
   0%,
   100% {
     opacity: 0;
@@ -18,9 +18,9 @@
 }
 
 .like-icon.is-liked .like-icon__heart {
-  animation: like-scale 0.3s ease-in 0.1s;
+  animation: heart-pulse 0.3s ease-in 0.1s;
 }
 
 .like-icon.is-liked .sparks {
-  animation: like-sparks 0.3s ease-in 0.3s forwards;
+  animation: heart-sparkle 0.3s ease-in 0.3s forwards;
 }
